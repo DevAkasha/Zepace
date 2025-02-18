@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +11,13 @@ public class Player : MonoBehaviour
     private Vector2 Direction;
 
     private InteractObject currentInteractable;
+    private Image InteractImage;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        InteractImage = GetComponentInChildren<Image>();
+        InteractImage.gameObject.SetActive(false);
     }
 
     void Start()
@@ -25,10 +29,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        if (Input.GetKeyDown(KeyCode.F) && currentInteractable != null)
-        {
-            currentInteractable.Interact();
-        }
+        Interact();
     }
 
     private void Move()
@@ -39,15 +40,28 @@ public class Player : MonoBehaviour
         rigid.velocity = Direction * Speed;
     }
 
+    private void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && currentInteractable != null)
+        {
+            currentInteractable.Interact();
+        }
+    }
+
     private void OnTriggerEnter2D (Collider2D other)
     {
         InteractObject interactable = other.GetComponent<InteractObject>();
-        if (interactable != null) currentInteractable = interactable;
+        if (interactable != null) 
+        {
+            InteractImage.gameObject.SetActive(true);
+            currentInteractable = interactable;
+        } 
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (currentInteractable != null && other.gameObject == currentInteractable.gameObject)
         {
+            InteractImage.gameObject.SetActive(false);
             currentInteractable = null;
         } 
     }
