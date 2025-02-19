@@ -7,14 +7,14 @@ public class PlayerOne : MonoBehaviour
     Animator animator;
     Rigidbody2D _rigidbody;
 
-    public float flapForce = 6f;
-    public float forwardSpeed = 3f;
-    public bool isDead = false;
+    float flapForce = 6f;
+    float forwardSpeed = 3f;
+    bool isDead = false;
     float deathCooldown = 0f;
 
     bool isFlap = false;
 
-    public bool godMode = false;
+    [SerializeField] private bool godMode = false;
 
     MiniGameOneManager miniGameOneManager;
 
@@ -58,7 +58,7 @@ public class PlayerOne : MonoBehaviour
             }
         }
     }
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (isDead) return;
         Vector3 velocity = _rigidbody.velocity;
@@ -68,7 +68,6 @@ public class PlayerOne : MonoBehaviour
         {
             velocity.y = flapForce;
             isFlap = false;
-
         }
 
         _rigidbody.velocity = velocity;
@@ -77,7 +76,7 @@ public class PlayerOne : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (godMode) return;
         if (isDead) return;

@@ -7,13 +7,8 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
 {
     protected override bool IsPersistent => false;
 
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI restartText;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI restartText;
   
     void Start()
     {
@@ -27,7 +22,7 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
     {
         restartText.gameObject.SetActive(true);
     }
-
+    
     public void UpdateScore(int score)
     {
         scoreText.text = score.ToString();

@@ -7,23 +7,22 @@ public class MiniGameOneManager : Manager<MiniGameOneManager>
 {
     protected override bool IsPersistent => false;
 
-    private int currentScore = 0;
+    int currentScore = 0;
 
     MiniGameOneUIManager miniGameOneUIManager;
-   
 
-    protected override void Awake()
+    void Start()
     {
-        base.Awake();
+        miniGameOneUIManager = MiniGameOneUIManager.Instance;   
     }
-    private void Start()
+
+    public void GameStart()
     {
-        miniGameOneUIManager = MiniGameOneUIManager.Instance;
+        Time.timeScale = 1f;
         miniGameOneUIManager.UpdateScore(0);
     }
     public void GameOver()
     {
-        Debug.Log("Game Over");
         miniGameOneUIManager.SetRestart();
     }
     public void RestartGame()

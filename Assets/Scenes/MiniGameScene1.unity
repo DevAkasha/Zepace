@@ -2836,10 +2836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65b5c72bf4c11a4b80a487150d291fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flapForce: 6
-  forwardSpeed: 3
-  isDead: 0
-  godMode: 0
+  godMode: 1
 --- !u!58 &1358772384
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3853,9 +3850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2750ab783b1dc46921d9186d6da7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numBgCount: 5
-  obstacleCount: 0
-  obstacleLastPostion: {x: 0, y: 0, z: 0}
 --- !u!50 &1723664960
 Rigidbody2D:
   serializedVersion: 4

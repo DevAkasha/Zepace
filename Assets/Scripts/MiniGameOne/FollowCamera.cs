@@ -12,7 +12,11 @@ public class FollowCamera : MonoBehaviour
         if (target == null) return;
 
         offsetX = transform.position.x - target.position.x;
-        
+    }
+
+    public void Init(Transform target)
+    {
+         this.target = target;
     }
 
     // Update is called once per frame

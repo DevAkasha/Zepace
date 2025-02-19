@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BgLooper : MonoBehaviour
 {
-    public int numBgCount = 5;
-    public int obstacleCount = 0;
-    public Vector3 obstacleLastPostion = Vector3.zero;
+    int numBgCount = 5;
+    int obstacleCount = 0;
+    Vector3 obstacleLastPostion = Vector3.zero;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class BgLooper : MonoBehaviour
         } 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Triggerd" + collision.name);
 
