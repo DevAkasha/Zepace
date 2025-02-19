@@ -4,19 +4,21 @@ public class MainManager : Manager<MainManager>
 {
     protected override bool IsPersistent => false;
     
-    public MainCamera mainCamera;
+    [SerializeField] MainCamera mainCamera;
     public Player player;
-    public Vector2 mapMinBound = new Vector2(-7, -3);
-    public Vector2 mapMaxBound = new Vector2(7, 14);
+    Vector2 mapMinBound = new Vector2(-7, -3);
+    Vector2 mapMaxBound = new Vector2(7, 14);
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
-    private void Start()
+    void Start()
     {
         mainCamera.Init(player.transform, mapMinBound, mapMaxBound);
+        InitPlayerPosition();
     }
 
+    void InitPlayerPosition()
+    {
+        Vector3 newPosition = player.transform.position;
+        newPosition = GameManager.Instance.playerData.LastMainPosition;
+        player.transform.position = newPosition;
+    }
 }

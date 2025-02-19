@@ -14,6 +14,7 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
     [SerializeField] Image TutorialView;
 
     MiniGameOneManager miniGameOneManager;
+    GameManager gameManager;
 
     protected override void Awake()
     {
@@ -24,6 +25,7 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
     void Start()
     {
         miniGameOneManager = MiniGameOneManager.Instance;
+        gameManager = GameManager.Instance;
         bestScoreText.text = miniGameOneManager.bestScore.ToString();
         //현재 씬에서 로드된 것이 아니면
         if (GameManager.Instance.playerData.lastSceneIndex != 2)
@@ -48,13 +50,15 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
         if (miniGameOneManager.bestScore < miniGameOneManager.currentScore)
             miniGameOneManager.bestScore = miniGameOneManager.currentScore;
         bestScoreText.text = miniGameOneManager.bestScore.ToString();
-        GameManager.Instance.playerData.MiniGameOneBestScore = MiniGameOneManager.Instance.bestScore;
-        MiniGameOneManager.Instance.RestartGame();
+        gameManager.playerData.MiniGameOneBestScore = miniGameOneManager.bestScore;
+        miniGameOneManager.RestartGame();
     }
     public void OnExitButton()
     {
-        GameManager.Instance.playerData.MiniGameOneBestScore = MiniGameOneManager.Instance.bestScore;
-        GameManager.Instance.MoveScene(1);
+        if (miniGameOneManager.bestScore < miniGameOneManager.currentScore)
+            miniGameOneManager.bestScore = miniGameOneManager.currentScore;
+        gameManager.playerData.MiniGameOneBestScore = miniGameOneManager.bestScore;
+        gameManager.MoveScene(1);
     }
 
     public void UpdateScore(int score)

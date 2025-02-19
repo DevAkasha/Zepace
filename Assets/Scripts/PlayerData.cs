@@ -5,11 +5,9 @@ using UnityEngine;
 public struct PlayerData 
 {
     public int lastSceneIndex;
-    public Vector2 LastMainPosition;
+    public Vector3 LastMainPosition;
 
     public int MiniGameOneBestScore;
-    public bool LastMiniGameOneResult;
     
     public int MiniGameTwoBestScore;
-    public bool LastMiniGameTwoResult;
 }

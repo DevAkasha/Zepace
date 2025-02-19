@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniOnePotal : InteractObject
+public class MiniGamePotal : InteractObject
 {
+    [SerializeField] int potalIndex;
     public override void Interact()
     {
         base.Interact();
-        GameManager.Instance.MoveScene(2);
+        GameManager.Instance.MoveScene(potalIndex);
     }
 }
