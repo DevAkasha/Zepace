@@ -3204,6 +3204,7 @@ GameObject:
   - component: {fileID: 1884488310}
   - component: {fileID: 1884488309}
   - component: {fileID: 1884488308}
+  - component: {fileID: 1884488311}
   m_Layer: 0
   m_Name: Potal
   m_TagString: Untagged
@@ -3245,7 +3246,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 1.5
 --- !u!212 &1884488309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3313,6 +3314,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884488311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884488307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7e05e54041d90458ed393962c9bf7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 0
+  interactDuration: 1
+  Duration: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
