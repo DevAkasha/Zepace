@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MiniGameOneManager : Manager<MiniGameOneManager>
 {
     protected override bool IsPersistent => false;
 
-    int currentScore = 0;
+    public int currentScore = 0;
+    public int bestScore = 0;
 
     MiniGameOneUIManager miniGameOneUIManager;
-
+    protected override void Awake()
+    {
+        base.Awake();
+        bestScore = GameManager.Instance.playerData.MiniGameOneBestScore;
+    }
     void Start()
     {
         miniGameOneUIManager = MiniGameOneUIManager.Instance;   
@@ -23,11 +27,11 @@ public class MiniGameOneManager : Manager<MiniGameOneManager>
     }
     public void GameOver()
     {
-        miniGameOneUIManager.SetRestart();
+        miniGameOneUIManager.AtGameOver();
     }
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Instance.MoveScene(2);
     }
     public void AddScore(int score)
     { 

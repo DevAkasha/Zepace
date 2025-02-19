@@ -10,7 +10,6 @@ public class PlayerOne : MonoBehaviour
     float flapForce = 6f;
     float forwardSpeed = 3f;
     bool isDead = false;
-    float deathCooldown = 0f;
 
     bool isFlap = false;
 
@@ -35,29 +34,10 @@ public class PlayerOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
-        {
-            if (deathCooldown <= 0)
-            {
-                // 게임 재시작
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-                {
-                    miniGameOneManager.RestartGame();
-                }
-            }
-            else
-            {
-                deathCooldown -= Time.deltaTime;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-            {
-                isFlap = true;
-            }
-        }
+        if (isDead) return;
+        else if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) isFlap = true;
     }
+
     void FixedUpdate()
     {
         if (isDead) return;
@@ -82,7 +62,6 @@ public class PlayerOne : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        deathCooldown = 1f;
         animator.SetInteger("IsDie", 1);
         miniGameOneManager.GameOver();
     }
