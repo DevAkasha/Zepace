@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class MainUIManager : Manager<MainUIManager>
 {
-    protected override bool IsPersistent => false;
-    
+    //DontDestroyOnLoad 설정을 위한 필드
+    protected override bool isPersistent => false;
 
+    //miniGameResultView 연결을 위한 필드
     [SerializeField] Image miniGameResultView;
     [SerializeField] Text miniGameResult;
     [SerializeField] Text miniGameBestScore;
 
+    //leaderBoardView 연결을 위한 필드
     [SerializeField] Image leaderBoardView;
     [SerializeField] Text miniGameNameText;
     [SerializeField] Text miniGameBestScoreText;
     [SerializeField] Text successScoreText;
+
+    //자동 닫기 시간
+    float autoCloseTime = 2f;
 
     GameManager gameManager;
 
@@ -28,7 +33,8 @@ public class MainUIManager : Manager<MainUIManager>
     }
 
     void Start()
-    {
+    {        
+        //If a scene other than the minigame scene is added, this code must be modified.
         int lastScneIndex = gameManager.playerData.lastSceneIndex;
         if (lastScneIndex > 1) OpenMiniGameResultView(lastScneIndex - 1);
     }
@@ -39,7 +45,7 @@ public class MainUIManager : Manager<MainUIManager>
         miniGameResult.text = isMiniGameOwnResult ? "Success" : "Fail";
         miniGameBestScore.text = gameManager.playerData.MiniGameBestScore[miniGameNumber - 1].ToString();
         miniGameResultView.gameObject.SetActive(true);
-        Invoke(nameof(CloseMiniGameOneResultView), 2f);
+        Invoke(nameof(CloseMiniGameOneResultView), autoCloseTime);
     }
     void CloseMiniGameOneResultView()
     {
@@ -62,7 +68,7 @@ public class MainUIManager : Manager<MainUIManager>
                 break;
         }
         leaderBoardView.gameObject.SetActive(true);
-        Invoke(nameof(CloseLeaderBoard), 2f);
+        Invoke(nameof(CloseLeaderBoard), autoCloseTime);
     }
 
     void CloseLeaderBoard()

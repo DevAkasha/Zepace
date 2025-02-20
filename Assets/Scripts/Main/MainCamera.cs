@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
+    //target을 따라가기 위한 필드
     public Transform target;
     public float speed = 5f;
 
-    private Vector2 minBound;
-    private Vector2 maxBound;
-    private int positionZ = -10;
+    //영역을 제한하기 위한 필드
+    Vector2 minBound; // x,y 최소값 
+    Vector2 maxBound; // x,y 최대값
+    int positionZ = -10;
 
     public void Init(Transform target, Vector2 minBound, Vector2 maxBound)
     {

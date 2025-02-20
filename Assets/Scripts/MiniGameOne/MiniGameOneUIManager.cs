@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
 {
-    protected override bool IsPersistent => false;
+    //DontDestroyOnLoad를 위한 field
+    protected override bool isPersistent => false;
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI bestScoreText;
+
     [SerializeField] Image GameOverView;
     [SerializeField] Image TutorialView;
 
@@ -27,14 +29,17 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
         miniGameOneManager = MiniGameOneManager.Instance;
         gameManager = GameManager.Instance;
         bestScoreText.text = miniGameOneManager.bestScore.ToString();
-        //현재 씬에서 로드된 것이 아니면
+
+        //If it is not loaded in the current scene
         if (GameManager.Instance.playerData.lastSceneIndex != 2)
         {
             Time.timeScale = 0f;
             TutorialView.gameObject.SetActive(true);
         }
+        //Tutorial Skip
         else OnStartButton();
     }
+
     public void AtGameOver()
     {
         GameOverView.gameObject.SetActive(true);

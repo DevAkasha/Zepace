@@ -4,39 +4,39 @@ using UnityEngine;
 
 public class InteractObject : MonoBehaviour
 {
-    public bool interactable;
-    [SerializeField] private float interactDuration = 1f;
-
-    private SpriteRenderer spriteRenderer;
-    [SerializeField] private float Duration = 1f;
+    //interactable상태를 스프라이트 랜더러로 보여주기 위한 필드
+    bool isInteractable;
+    SpriteRenderer spriteRenderer;
+    [SerializeField] float interactDuration = 1f;
+    [SerializeField] float currentDuration = 1f;
 
     protected virtual void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (!interactable)
+        if (!isInteractable)
         {
-            Duration -= Time.fixedDeltaTime;
-            if (Duration < 0f)
+            currentDuration -= Time.fixedDeltaTime;
+            if (currentDuration < 0f)
             {
                 InteractReset();
             }
-        }       
+        }
     }
 
     public virtual void Interact()
     {
-        interactable = false;
+        isInteractable = false;
         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
     }
 
     public virtual void InteractReset()
     {
-        Duration = interactDuration;
+        currentDuration = interactDuration;
         spriteRenderer.color = new Color(0.6f, 1f, 0.6f, 1f);
-        interactable = true;
+        isInteractable = true;
     }
 }

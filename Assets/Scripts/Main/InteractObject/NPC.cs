@@ -5,28 +5,29 @@ using UnityEngine.UI;
 
 public class NPC : InteractObject
 {
-    private string info = "오른쪽에 포탈이 있어";
-    private Image infoImage;
-    private Text infoText;
+    //대화창을 열고 대화내용을 보여주기 위한 필드
+    private string speechContents = "오른쪽에 포탈이 있어";
+    private Image speechView;
+    private Text speechText;
 
     protected override void Awake()
     {
         base.Awake();
-        infoImage = GetComponentInChildren<Image>();
-        infoText = GetComponentInChildren<Text>();
+        speechView = GetComponentInChildren<Image>();
+        speechText = GetComponentInChildren<Text>();
     }
     public override void Interact()
     {
         base.Interact();
-        infoImage.gameObject.SetActive(true);
-        infoText.text = info;
+        speechView.gameObject.SetActive(true);
+        speechText.text = speechContents;
     }
 
     public override void InteractReset()
     {
         base.InteractReset();
-        infoImage.gameObject.SetActive(false);
-        infoText.text = "";
+        speechView.gameObject.SetActive(false);
+        speechText.text = "";
     }
 
 }

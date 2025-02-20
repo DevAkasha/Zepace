@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float Speed = 5f;
+    //for Move fields
+    float Speed = 5f;
     private Rigidbody2D rigid;
     private Vector2 Direction;
-
+    
+    //for Interact fields
     private InteractObject currentInteractable;
     private Image InteractImage;
 

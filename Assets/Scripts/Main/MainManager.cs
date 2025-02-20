@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class MainManager : Manager<MainManager>
 {
-    protected override bool IsPersistent => false;
+    //DontDestroyOnLoad 적용할지 정하는 필드
+    protected override bool isPersistent => false;
     
+    //Camera Init을 위한 필드, Camera와 player의 직접연결을 피하기 위해
     [SerializeField] MainCamera mainCamera;
     public Player player;
     Vector2 mapMinBound = new Vector2(-7, -3);
@@ -15,6 +17,7 @@ public class MainManager : Manager<MainManager>
         InitPlayerPosition();
     }
 
+    //로드 시에 플레이어를 LastMainPosition으로 초기화
     void InitPlayerPosition()
     {
         Vector3 newPosition = player.transform.position;

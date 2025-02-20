@@ -550,7 +550,7 @@ MonoBehaviour:
   leaderBoardView: {fileID: 1420267179}
   miniGameNameText: {fileID: 65301090}
   miniGameBestScoreText: {fileID: 1826633087}
-  successScoreText: {fileID: 0}
+  successScoreText: {fileID: 703681673}
 --- !u!114 &431488900
 MonoBehaviour:
   m_ObjectHideFlags: 0

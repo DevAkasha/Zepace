@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class MiniGameOneManager : Manager<MiniGameOneManager>
 {
-    protected override bool IsPersistent => false;
+    //DontDestroyOnLoad 설정하는 field
+    protected override bool isPersistent => false;
 
     public int currentScore = 0;
     public int bestScore = 0;
 
     MiniGameOneUIManager miniGameOneUIManager;
+
     protected override void Awake()
     {
         base.Awake();
         bestScore = GameManager.Instance.playerData.MiniGameBestScore[0];
     }
+
     void Start()
     {
         miniGameOneUIManager = MiniGameOneUIManager.Instance;   

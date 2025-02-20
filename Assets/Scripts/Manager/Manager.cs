@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//Singleton pattern that can be set to DontDestroyOnLoad
 public abstract class Manager<T> : MonoBehaviour where T : Manager<T>
 {
     private static T instance;
@@ -21,7 +22,7 @@ public abstract class Manager<T> : MonoBehaviour where T : Manager<T>
         }
     }
 
-    protected virtual bool IsPersistent => true;
+    protected virtual bool isPersistent => true;
 
     protected virtual void Awake()
     {
@@ -29,7 +30,7 @@ public abstract class Manager<T> : MonoBehaviour where T : Manager<T>
         {
             instance = (T)this;
 
-            if (IsPersistent)
+            if (isPersistent)
             {
                 DontDestroyOnLoad(gameObject);
             }
