@@ -50,14 +50,14 @@ public class MiniGameOneUIManager : Manager<MiniGameOneUIManager>
         if (miniGameOneManager.bestScore < miniGameOneManager.currentScore)
             miniGameOneManager.bestScore = miniGameOneManager.currentScore;
         bestScoreText.text = miniGameOneManager.bestScore.ToString();
-        gameManager.playerData.MiniGameOneBestScore = miniGameOneManager.bestScore;
+        gameManager.playerData.MiniGameBestScore[0] = miniGameOneManager.bestScore;
         miniGameOneManager.RestartGame();
     }
     public void OnExitButton()
     {
         if (miniGameOneManager.bestScore < miniGameOneManager.currentScore)
             miniGameOneManager.bestScore = miniGameOneManager.currentScore;
-        gameManager.playerData.MiniGameOneBestScore = miniGameOneManager.bestScore;
+        gameManager.playerData.MiniGameBestScore[0] = miniGameOneManager.bestScore;
         gameManager.MoveScene(1);
     }
 

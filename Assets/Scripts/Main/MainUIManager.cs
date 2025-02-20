@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class MainUIManager : Manager<MainUIManager>
 {
     protected override bool IsPersistent => false;
-    bool isMiniGameOwnResult;
+    
 
-    [SerializeField] Image miniGameOneResultView;
-    [SerializeField] Text miniGameOneResult;
-    [SerializeField] Text miniGameOneBestScore;
+    [SerializeField] Image miniGameResultView;
+    [SerializeField] Text miniGameResult;
+    [SerializeField] Text miniGameBestScore;
 
     [SerializeField] Image leaderBoardView;
     [SerializeField] Text miniGameNameText;
@@ -23,26 +23,27 @@ public class MainUIManager : Manager<MainUIManager>
     {
         base.Awake();
         gameManager = GameManager.Instance;
-        miniGameOneResultView.gameObject.SetActive(false);
+        miniGameResultView.gameObject.SetActive(false);
         leaderBoardView.gameObject.SetActive(false);
-        isMiniGameOwnResult = gameManager.miniGameOneSucessScore <= gameManager.playerData.MiniGameOneBestScore;
     }
 
     void Start()
     {
-        if (gameManager.playerData.lastSceneIndex == 2) OpenMiniGameOneResultView();
+        int lastScneIndex = gameManager.playerData.lastSceneIndex;
+        if (lastScneIndex > 1) OpenMiniGameResultView(lastScneIndex - 1);
     }
 
-    void OpenMiniGameOneResultView()
+    void OpenMiniGameResultView(int miniGameNumber)
     {
-        miniGameOneResult.text = isMiniGameOwnResult ? "Success" : "Fail";
-        miniGameOneBestScore.text = gameManager.playerData.MiniGameOneBestScore.ToString();
-        miniGameOneResultView.gameObject.SetActive(true);
+        bool isMiniGameOwnResult = gameManager.miniGameSucessScore[miniGameNumber-1] <= gameManager.playerData.MiniGameBestScore[miniGameNumber-1];
+        miniGameResult.text = isMiniGameOwnResult ? "Success" : "Fail";
+        miniGameBestScore.text = gameManager.playerData.MiniGameBestScore[miniGameNumber - 1].ToString();
+        miniGameResultView.gameObject.SetActive(true);
         Invoke(nameof(CloseMiniGameOneResultView), 2f);
     }
     void CloseMiniGameOneResultView()
     {
-        miniGameOneResultView.gameObject.SetActive(false);
+        miniGameResultView.gameObject.SetActive(false);
     }
 
     public void OpenLeaderBoard(int leaderBoardIndex)
@@ -51,13 +52,13 @@ public class MainUIManager : Manager<MainUIManager>
         {
             case 1:
                 miniGameNameText.text = "FlappyPlane";
-                miniGameBestScoreText.text = gameManager.playerData.MiniGameOneBestScore.ToString();
-                successScoreText.text = gameManager.miniGameOneSucessScore.ToString();
+                miniGameBestScoreText.text = gameManager.playerData.MiniGameBestScore[0].ToString();
+                successScoreText.text = gameManager.miniGameSucessScore[0].ToString();
                 break;
             case 2:
                 miniGameNameText.text = "°³¹ßÁß";
-                miniGameBestScoreText.text = gameManager.playerData.MiniGameOneBestScore.ToString();
-                successScoreText.text = gameManager.miniGameTwoSucessScore.ToString();
+                miniGameBestScoreText.text = gameManager.playerData.MiniGameBestScore[1].ToString();
+                successScoreText.text = gameManager.miniGameSucessScore[1].ToString();
                 break;
         }
         leaderBoardView.gameObject.SetActive(true);

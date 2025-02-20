@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e528dace626ddf43a0c58ed1e1ce475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGameOwnSucessScore: 10
+  miniGameSucessScore: 0a00000000000000
 --- !u!4 &168921554
 Transform:
   m_ObjectHideFlags: 0
@@ -544,12 +544,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd75b6179fa2c54b9c2f8d118d081e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGameOneResultView: {fileID: 1880926762}
-  miniGameOneResult: {fileID: 1025570017}
-  miniGameOneBestScore: {fileID: 386681402}
+  miniGameResultView: {fileID: 1880926762}
+  miniGameResult: {fileID: 1025570017}
+  miniGameBestScore: {fileID: 386681402}
   leaderBoardView: {fileID: 1420267179}
   miniGameNameText: {fileID: 65301090}
   miniGameBestScoreText: {fileID: 1826633087}
+  successScoreText: {fileID: 0}
 --- !u!114 &431488900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4275,7 +4276,7 @@ GameObject:
   - component: {fileID: 1880926763}
   - component: {fileID: 1880926762}
   m_Layer: 5
-  m_Name: MiniGameOneResultView
+  m_Name: MiniGameResultView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

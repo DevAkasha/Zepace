@@ -13,7 +13,7 @@ public class MiniGameOneManager : Manager<MiniGameOneManager>
     protected override void Awake()
     {
         base.Awake();
-        bestScore = GameManager.Instance.playerData.MiniGameOneBestScore;
+        bestScore = GameManager.Instance.playerData.MiniGameBestScore[0];
     }
     void Start()
     {

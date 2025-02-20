@@ -10,7 +10,6 @@ public class PlayerOne : MonoBehaviour
     float flapForce = 6f;
     float forwardSpeed = 3f;
     bool isDead = false;
-
     bool isFlap = false;
 
     [SerializeField] private bool godMode = false;
