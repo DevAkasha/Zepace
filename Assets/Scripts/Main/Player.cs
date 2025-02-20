@@ -20,12 +20,6 @@ public class Player : MonoBehaviour
         InteractImage.gameObject.SetActive(false);
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     private void FixedUpdate()
     {
         Move();

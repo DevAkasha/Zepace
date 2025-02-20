@@ -16,18 +16,12 @@ public class PlayerOne : MonoBehaviour
 
     MiniGameOneManager miniGameOneManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         miniGameOneManager = MiniGameOneManager.Instance;
 
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-
-        if (animator == null)
-            Debug.LogError("Not Founded Animator");
-        if (_rigidbody == null)
-            Debug.LogError("Not Founded Rigidbody");
     }
 
     // Update is called once per frame

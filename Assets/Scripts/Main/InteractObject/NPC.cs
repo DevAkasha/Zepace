@@ -13,7 +13,6 @@ public class NPC : InteractObject
     {
         base.Awake();
         infoImage = GetComponentInChildren<Image>();
-        Debug.Log("[NPC] Awake ½ÇÇàµÊ");
         infoText = GetComponentInChildren<Text>();
     }
     public override void Interact()
